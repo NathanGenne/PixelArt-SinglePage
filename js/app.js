@@ -24,20 +24,12 @@ $(function() {
 
     let reset = $('.app-tools .reset');
 
-    $('colorset-name').text(`SET : <select id="selector">
-        <option value="valeur1">Game Boy colors</option>
-        <option value="valeur2" selected>Game Boy colors</option>
-        <option value="valeur3">Game Boy colors</option>
-        </select>`);
-
 
     // ------------------------------------------
     // Créé une grille de pixels vide
     // ------------------------------------------
 
     function emptyGrid(sizePx) {
-        // Réinitialise la grille
-        $('.pixel').remove();
         // créé la grille case par case
         for ( x=0; x<definition; x++) {
             // créé un nouveau pixel
@@ -70,35 +62,23 @@ $(function() {
         // Défini le background de la case comme la couleur sélectionnée
         colorBoxes.click(function() {
             selectColor($(this));
-            console.log(activeColor);
         });
 
         // Change de couleur le pixel
-        $('.pixel').click(function() {
+        $('.pixel').mousedown(function() {
             $(this).css({'background':activeColor});
         });
 
-        // Efface la couleur du pixel
+        // Efface la couleur du pixel (background:white)
         $('.pixel').dblclick(function() {
             $(this).css({'background':'white'});
-            console.log('fff');
         });
 
-        // Reset le click
+        // Efface la couleur de tous les pixels (background:white)
         reset.click(function() {
-            console.log('reset');
-            emptyGrid(sizePx);
+            $('.pixel').css({'background':'white'});
         });
 
-
-
-        /* $('.pixel').mouseenter(function() {
-            $(this).css({'background': activeColor});
-        });
-
-        $('.pixel').mouseleave(function() {
-            $(this).css({'background': 'none'});
-        }); */
     });
 
 });
