@@ -78,6 +78,10 @@ Palette de couleur
     display: block;
     margin: 0 1vmin;
 }
+.tool {
+    width: auto;
+}
+
 .app-tools .swatch.is-active {
     border: 2px solid #fff;
     box-shadow: 0 0 5px rgba(0,0,0,0.3);
