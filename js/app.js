@@ -22,7 +22,8 @@ $(function() {
     // Défini la définition de l'écran
     let definition = widthPx*widthPx;
 
-    let reset = $('.app-tools .reset');
+    const reset = $('.app-tools .reset');
+    const exports = $('.app-tools .export');
 
 
     // ------------------------------------------
@@ -77,6 +78,17 @@ $(function() {
         // Efface la couleur de tous les pixels (background:white)
         reset.click(function() {
             $('.pixel').css({'background':'white'});
+        });
+
+        // Récupère le block content et le converti en image jpeg
+        exports.click(function() {
+            domtoimage.toJpeg(document.getElementById('content'), { quality: 0.95 })
+            .then(function (dataUrl) {
+                var link = document.createElement('a');
+                link.download = 'imageNG.jpeg';
+                link.href = dataUrl;
+                link.click();
+            });
         });
 
     });
