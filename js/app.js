@@ -82,10 +82,10 @@ $(function() {
 
         // Récupère le block content et le converti en image jpeg
         exports.click(function() {
-            domtoimage.toJpeg(document.getElementById('content'), { quality: 0.95 })
+            domtoimage.toPng(document.getElementById('content'), { quality: 0.95 })
             .then(function (dataUrl) {
                 var link = document.createElement('a');
-                link.download = 'imageNG.jpeg';
+                link.download = 'imageNG.png';
                 link.href = dataUrl;
                 link.click();
             });
